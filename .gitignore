@@ -1,3 +1,15 @@
-*.~undo-tree~
+# OS / editor
 .DS_Store
-*.vscode
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.~undo-tree~
+
+# Build outputs (C/C++)
+*.o
+*.obj
+*.out
+*.exe
+*.dSYM/
