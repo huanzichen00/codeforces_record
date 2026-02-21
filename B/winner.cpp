@@ -9,7 +9,7 @@ int main() {
   cin >> n;
 
   vector<pair<string, int>> logs; // 记录读入数据，便于第二遍按原顺序回放
-  logs.reverse(n); // reserve 只分配空间，不增加元素数量。
+  logs.reserve(n); // reserve 只分配空间，不增加元素数量。
 
   map<string, long long> total;
 
@@ -39,6 +39,6 @@ int main() {
       cout << name << "\n";
       return 0;
     }
-  }  return 0;
+  }
+  return 0;
 }
-
