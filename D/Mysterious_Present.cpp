@@ -13,7 +13,7 @@ int main() {
     int wi, hi;
     cin >> wi >> hi;
     if (wi < w && hi < h) {
-      v.push_back({w, h, i});
+      v.push_back({wi, hi, i});
     }
   }
 
