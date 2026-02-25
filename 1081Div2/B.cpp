@@ -5,8 +5,8 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n, string;
-  cin >> n, string;
+  int n; string s;
+  cin >> n >> s;
 
   int zeros = 0, ones = 0;
   int idx1[n];
@@ -18,7 +18,7 @@ int main() {
     }
   }
   zeros = n - ones;
-  if (n % 2 == 1 && ones % 2 == 0) {
+  if (n % 2 == 1 && ones % 2 == 1) {
     cout << "-1" << "\n";
     return 0;
   }
@@ -27,7 +27,7 @@ int main() {
     int limit1 = 0;
     for (int i = 0; i < n; i++) {
       if (i == idx1[limit1]) {
-        cout << i << " ";
+        cout << i + 1 << " ";
         limit1++;
       }
     }
@@ -38,7 +38,7 @@ int main() {
   int limit2 = 0;
   for (int i = 0; i < n; i++) {
     if (i != idx1[limit2]) {
-      cout << i << " ";
+      cout << i + 1 << " ";
     } else {
       limit2++;
     }
