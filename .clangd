@@ -1,0 +1,5 @@
+CompileFlags:
+  Compiler: /opt/homebrew/bin/g++-15
+  Add:
+    - -std=gnu++17
+    - -I/Users/huanzichen/codeforces/include

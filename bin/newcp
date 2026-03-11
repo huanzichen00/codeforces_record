@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: bin/newcp [-f] <filename> [filename ...]
+
+Create one or more C++ competitive programming template files.
+
+Options:
+  -f    Overwrite target file if it already exists.
+  -h    Show this help message.
+EOF
+}
+
+force=0
+
+while getopts ":fh" opt; do
+  case "$opt" in
+    f) force=1 ;;
+    h)
+      usage
+      exit 0
+      ;;
+    \?)
+      echo "Unknown option: -$OPTARG" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+if [[ $# -lt 1 ]]; then
+  usage >&2
+  exit 1
+fi
+
+status=0
+
+for raw_target in "$@"; do
+  target="$raw_target"
+
+  if [[ "$target" != *.* ]]; then
+    target="${target}.cpp"
+  fi
+
+  dir="$(dirname "$target")"
+  mkdir -p "$dir"
+
+  if [[ -e "$target" && "$force" -ne 1 ]]; then
+    echo "File already exists: $target" >&2
+    echo "Use -f to overwrite." >&2
+    status=1
+    continue
+  fi
+
+  cat >"$target" <<'EOF'
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+
+  return 0;
+}
+EOF
+
+  echo "Created: $target"
+done
+
+exit "$status"

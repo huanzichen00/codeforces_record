@@ -4,7 +4,8 @@ using namespace std;
 struct Item { int w, h, idx; };
 
 int main() {
-  int tt, w, h; cin >> tt >> w >> h;
+  int tt, w, h;
+  cin >> tt >> w >> h;
 
   vector<Item> v;
   v.reserve(tt);
@@ -27,4 +28,3 @@ int main() {
   cout << "\n";
   return 0;
 }
-
