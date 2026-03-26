@@ -9,8 +9,7 @@ public:
   bool virus[MAXN];  // 点 i 是否是初始感染来源
   int cnts[MAXN];    // cnts[x] : 如果删掉感染源 x; 最多能救下多少个普通点
   int infect[MAXN];  // infect[root] : 这个普通联通块被哪些感染源碰到
-                     // -1 : 还没被任何感染源碰到, 删一个也救不了这个块
-                     // >= 0 目前只被一个感染源碰到, 值就是那个感染源编号
+                     // -1 : 还没被任何感染源碰到, 还没被感染源碰到                     // >= 0 目前只被一个感染源碰到, 值就是那个感染源编号
                      // -2 : 被多个不同感染源碰到, 删一个也救不了这个块
   int father[MAXN];
   int sz[MAXN];
@@ -55,7 +54,7 @@ public:
     for (int i = 0; i < n; i++) {
       if (!virus[i]) {
         for (int j = i + 1; j < n; j++) {
-          if (!virus[i] && graph[i][j] == 1) {
+          if (!virus[j] && graph[i][j] == 1) {
             unite(i, j);
           }
         }
